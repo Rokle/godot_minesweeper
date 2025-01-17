@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://8h5ixkhennhq"]
+
+[ext_resource type="Script" path="res://scenes/difficutly_selector/difficutly_selector.gd" id="1_0lv2y"]
+[ext_resource type="Resource" uid="uid://dkpfliww46uiu" path="res://data/difficulty/easy_difficulty.tres" id="2_1jfla"]
+[ext_resource type="Resource" uid="uid://ct8ih0b2es6cx" path="res://data/difficulty/normal_difficulty.tres" id="3_0xdni"]
+[ext_resource type="Resource" uid="uid://c0yocqj4xebqt" path="res://data/difficulty/hard_difficulty.tres" id="4_ehjpe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vagqy"]
+font_size = 18
+
+[node name="difficutly_selector" type="Control" node_paths=PackedStringArray("_row_counter", "_row_slider", "_column_counter", "_column_slider", "_mine_counter", "_mine_slider")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0lv2y")
+_easy_difficulty = ExtResource("2_1jfla")
+_normal_difficulty = ExtResource("3_0xdni")
+_hard_difficulty = ExtResource("4_ehjpe")
+_row_counter = NodePath("row_counter")
+_row_slider = NodePath("row_slider")
+_column_counter = NodePath("column_counter")
+_column_slider = NodePath("column_slider")
+_mine_counter = NodePath("mine_counter")
+_mine_slider = NodePath("mine_slider")
+
+[node name="easy" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 544.0
+offset_right = 208.0
+offset_bottom = 592.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 18
+text = "Easy"
+
+[node name="normal" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 624.0
+offset_right = 208.0
+offset_bottom = 672.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 18
+text = "Normal"
+
+[node name="hard" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 704.0
+offset_right = 208.0
+offset_bottom = 752.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 18
+text = "Hard"
+
+[node name="row_counter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 448.0
+offset_right = 1248.0
+offset_bottom = 482.0
+text = "Rows: 999"
+label_settings = SubResource("LabelSettings_vagqy")
+
+[node name="row_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 480.0
+offset_right = 1248.0
+offset_bottom = 496.0
+theme_override_constants/center_grabber = -1
+min_value = 4.0
+max_value = 24.0
+value = 4.0
+scrollable = false
+
+[node name="column_counter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 528.0
+offset_right = 1248.0
+offset_bottom = 562.0
+text = "Columns: 999"
+label_settings = SubResource("LabelSettings_vagqy")
+
+[node name="column_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 560.0
+offset_right = 1248.0
+offset_bottom = 576.0
+theme_override_constants/center_grabber = -1
+min_value = 4.0
+max_value = 24.0
+value = 4.0
+scrollable = false
+
+[node name="mine_counter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 608.0
+offset_right = 1248.0
+offset_bottom = 642.0
+text = "Mines: 999"
+label_settings = SubResource("LabelSettings_vagqy")
+
+[node name="mine_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 640.0
+offset_right = 1248.0
+offset_bottom = 656.0
+theme_override_constants/center_grabber = -1
+min_value = 5.0
+value = 5.0
+scrollable = false
+
+[connection signal="button_down" from="easy" to="." method="_on_easy_button_down"]
+[connection signal="button_down" from="normal" to="." method="_on_normal_button_down"]
+[connection signal="button_down" from="hard" to="." method="_on_hard_button_down"]
+[connection signal="value_changed" from="row_slider" to="." method="_on_row_slider_value_changed"]
+[connection signal="value_changed" from="column_slider" to="." method="_on_column_slider_value_changed"]
+[connection signal="value_changed" from="mine_slider" to="." method="_on_mine_slider_value_changed"]

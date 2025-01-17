@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://34ubn08jqp0k"]
+
+[ext_resource type="PackedScene" uid="uid://8h5ixkhennhq" path="res://scenes/difficutly_selector/difficutly_selector.tscn" id="1_5cu2b"]
+[ext_resource type="Script" path="res://ui/menu_ui/menu_ui.gd" id="1_bfvtc"]
+[ext_resource type="Script" path="res://ui/menu_ui/message.gd" id="2_0dm42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d4yan"]
+font_size = 24
+
+[node name="menu_ui" type="Control" node_paths=PackedStringArray("message", "start_game", "difficulty_selector")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_bfvtc")
+message = NodePath("message")
+start_game = NodePath("start_game")
+difficulty_selector = NodePath("difficutly_selector")
+
+[node name="message" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 48.0
+offset_top = 192.0
+offset_right = 254.0
+offset_bottom = 533.0
+label_settings = SubResource("LabelSettings_d4yan")
+autowrap_mode = 3
+script = ExtResource("2_0dm42")
+
+[node name="start_game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 704.0
+offset_right = 1248.0
+offset_bottom = 768.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 18
+text = "Start Game"
+
+[node name="difficutly_selector" parent="." instance=ExtResource("1_5cu2b")]
+
+[connection signal="button_up" from="start_game" to="." method="_on_start_game_button_up"]

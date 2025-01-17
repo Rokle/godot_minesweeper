@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d31qsi5m1v5pg"]
+
+[ext_resource type="Script" path="res://ui/main_scene/main_scene.gd" id="1_jubp8"]
+[ext_resource type="PackedScene" uid="uid://dj3t73b0d7mi3" path="res://ui/board_ui/board_ui.tscn" id="2_tmtiw"]
+[ext_resource type="PackedScene" uid="uid://34ubn08jqp0k" path="res://ui/menu_ui/menu_ui.tscn" id="3_xey1e"]
+
+[node name="main_scene" type="Control" node_paths=PackedStringArray("_board_ui", "_menu_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jubp8")
+_board_ui = NodePath("board_ui")
+_menu_ui = NodePath("menu_ui")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.242188, 0.242188, 0.242188, 1)
+
+[node name="board_ui" parent="." instance=ExtResource("2_tmtiw")]
+layout_mode = 1
+
+[node name="menu_ui" parent="." instance=ExtResource("3_xey1e")]
+layout_mode = 1
